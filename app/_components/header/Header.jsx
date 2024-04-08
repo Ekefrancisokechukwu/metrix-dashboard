@@ -8,7 +8,6 @@ import { AlignJustify, AlignRight } from "lucide-react";
 import { useSidebar } from "@/hooks/use-sidebar";
 
 import ShopSelect from "./ShopSelect";
-import { useState } from "react";
 import { mediaQueries } from "@/app/style/mediaQueries";
 
 const Header = () => {
@@ -36,7 +35,8 @@ const Header = () => {
           <button onClick={toggleSidebar} className="sidebar-btn">
             <AlignJustify width={18} height={18} />
           </button>
-          <button>
+
+          <button className="notification-icon">
             <Image
               src={"/img/Notification.svg"}
               alt="notification icon"
@@ -104,6 +104,12 @@ const HeaderWrapper = styled.header`
     column-gap: 1.6rem;
   }
 
+  .notification-icon {
+    display: none;
+    @media ${mediaQueries.sm} {
+      display: block;
+    }
+  }
   .header-bottom {
     padding: 0.3rem 1rem;
     display: none;

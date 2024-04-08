@@ -47,9 +47,8 @@ const Chart = () => {
 };
 
 const DoghnutChartBox = styled.div`
-  background-color: var(--white);
-  border-radius: var(--rounded-md);
   padding: 21px 20px;
+  height: 100%;
 
   .chart-header {
     display: flex;
@@ -101,7 +100,6 @@ const DoghnutChartBox = styled.div`
     background-repeat: no-repeat;
     background-position: center;
     width: 100%;
-    height: 205px;
     margin-top: 1rem;
   }
 `;

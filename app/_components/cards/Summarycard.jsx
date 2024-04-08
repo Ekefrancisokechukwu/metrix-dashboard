@@ -11,6 +11,7 @@ const Summarycard = ({ children, bgColor }) => {
 const SummaryCardWrapper = styled.div`
   border-radius: var(--rounded-md);
   padding: 11px 15px;
+  height: 100%;
 
   .card-header {
     display: flex;

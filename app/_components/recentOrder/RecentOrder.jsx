@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 export default function RecentOrder() {
   return (
-    <Card>
+    <Card className="custom-scrollbar">
       <h1 className={` ${inter.className} card-title`}>Recent Orders</h1>
 
       <div className="card-contents">
@@ -43,6 +43,7 @@ const Card = styled.div`
   background-color: var(--white);
   padding: 20px;
   border-radius: var(--rounded-md);
+  height: 100%;
 
   .card-title {
     color: var(--primary-color);

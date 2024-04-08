@@ -1,3 +1,4 @@
+import { mediaQueries } from "@/app/style/mediaQueries";
 import { Plus, Smile } from "lucide-react";
 import Image from "next/image";
 import styled from "styled-components";
@@ -13,7 +14,7 @@ const ChatWindowInput = () => {
         <Smile width={18} height={18} />
       </button>
       <button className="send-btn">
-        send
+        <span>send</span>
         <Image src={"/img/Send.svg"} alt="send icon" width={20} height={20} />
       </button>
     </InputWrapper>
@@ -22,11 +23,14 @@ const ChatWindowInput = () => {
 
 const InputWrapper = styled.form`
   border: 1px solid #e1e2e9;
-  border-radius: var(--rounded-sm);
   padding: 0.4rem 0.7rem;
   display: flex;
   align-items: center;
   column-gap: 1rem;
+
+  @media ${mediaQueries.sm} {
+    border-radius: var(--rounded-sm);
+  }
 
   .multiply-btn {
     width: 30px;
@@ -70,7 +74,7 @@ const InputWrapper = styled.form`
     display: flex;
     align-items: center;
     column-gap: 1rem;
-    padding: 8px 16px;
+    padding: 8px 10px;
     border-radius: var(--rounded);
     background-color: #fff2e2;
     flex-shrink: 0;
@@ -79,6 +83,17 @@ const InputWrapper = styled.form`
 
     &:hover {
       background-color: #f9e6cd;
+    }
+    span {
+      display: none;
+    }
+
+    @media ${mediaQueries.sm} {
+      padding: 8px 16px;
+
+      span {
+        display: inline-block;
+      }
     }
   }
 `;

@@ -83,5 +83,7 @@ export const SummaryCards = () => {
 const SummaryCardContainer = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
   row-gap: 1rem;
 `;

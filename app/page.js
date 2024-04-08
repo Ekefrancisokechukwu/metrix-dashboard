@@ -15,15 +15,35 @@ export default function Home() {
       </div>
 
       <div className="market_summary-content">
-        <DoghnutChart />
-        <SummaryCards />
-        <RecentOrder />
-        {/* <div className="text-3xl summary-barChat bg-white p-4">
+        {/* <div className="col-1">
+          <DoghnutChart />
+        </div> */}
+        {/* <div className="col-2">
+          <SummaryCards />
+        </div>
+        <div className="col-3">
+          <RecentOrder />
+        </div> */}
+
+        {/* <div className="text-3xl col-1  p-4">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum est
           praesentium nihil, quo reprehenderit repellendus voluptates tempore
           eum nulla ducimus vero veritatis amet, ab vel iusto suscipit vitae
           quam architecto.
         </div> */}
+      </div>
+
+      <div class="grid-container">
+        <div class="item1">
+          <DoghnutChart />
+        </div>
+        <div class="item2">
+          <SummaryCards />
+        </div>
+        <div class="item3">
+          <RecentOrder />
+        </div>
+        <div class="item4 ">4</div>
       </div>
     </MainWrapper>
   );
@@ -43,26 +63,54 @@ const MainWrapper = styled.main`
     gap: 1rem;
   }
 
-  .summary-barChat {
-    grid-column: 1/ -2;
-    /* grid-row: 1; */
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 1rem;
+    border-radius: var(--rounded-md);
+    gap: 1rem;
+    /* background-color: #2196f3; */
+    padding: 10px;
+
+    @media ${mediaQueries.lg} {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-rows: repeat(10, 3.8rem);
+    }
   }
 
-  .market_summary-content {
-    margin-top: 1rem;
-    display: grid;
-    grid-template-columns: repeat(1, minmax(0, 1fr));
+  .grid-container > div {
+    /* background-color: rgba(255, 255, 255, 0.8); */
+  }
 
-    align-items: start;
-    gap: 1rem;
-    flex-grow: 1;
+  .item1 {
+    background-color: var(--white);
+    border-radius: var(--rounded-md);
 
-    @media (${mediaQueries.md}) {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+    @media ${mediaQueries.lg} {
+      grid-row: 1 / span 5;
+      grid-row: 1 / span 5;
     }
+  }
 
-    @media (${mediaQueries.lg}) {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+  .item2 {
+    @media ${mediaQueries.lg} {
+      grid-row: 1 / span 5;
+    }
+  }
+
+  .item3 {
+    @media ${mediaQueries.lg} {
+      grid-row: 1 / -1;
+    }
+  }
+
+  .item4 {
+    background-color: var(--white);
+    border-radius: var(--rounded-md);
+
+    @media ${mediaQueries.lg} {
+      grid-column: 1 / -2;
+      grid-row: 6 / -1;
     }
   }
 
