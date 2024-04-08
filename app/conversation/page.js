@@ -5,6 +5,7 @@ import CustomerMessagePanel from "./_components/CustomerMessagePanel";
 import ChatWindow from "./_components/chatWindow/ChatWindow";
 import ChatUserList from "./_components/chatUserList/ChatUserList";
 import { mediaQueries } from "../style/mediaQueries";
+import { Suspense } from "react";
 
 const Conversation = () => {
   return (
@@ -12,8 +13,10 @@ const Conversation = () => {
       <CustomerMessagePanel />
 
       <div className="chat">
-        <ChatUserList />
-        <ChatWindow />
+        <Suspense fallback={<div>Loading...</div>}>
+          <ChatUserList />
+          <ChatWindow />
+        </Suspense>
       </div>
     </ChatWrapper>
   );
