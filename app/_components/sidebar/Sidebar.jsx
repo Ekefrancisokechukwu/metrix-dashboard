@@ -19,10 +19,8 @@ const Sidebar = () => {
   const handleSidebarToggle = useCallback(() => {
     if (!mediaQueriesXl) {
       setCollapsedFalse();
-    } else {
-      toggleSidebar();
     }
-  }, [mediaQueriesXl, setCollapsedFalse, toggleSidebar]);
+  }, [mediaQueriesXl, setCollapsedFalse]);
 
   useEffect(() => {
     handleSidebarToggle();
