@@ -58,7 +58,7 @@ const ChatUserWrapper = styled.div`
   width: 100%;
   background-color: var(--white);
   padding-top: 18px;
-  height: calc(100vh - 26vh);
+  height: calc(83vh);
 
   .chatUser-header {
     padding: 0 1.5rem;
@@ -90,10 +90,14 @@ const ChatUserWrapper = styled.div`
   }
   .users-container {
     margin-top: 1.4rem;
+    height: 70%;
+    overflow-y: auto;
   }
 
   @media ${mediaQueries.lg} {
     width: 390px;
+    height: calc(100vh - 26vh);
+
     border-radius: var(--rounded-md);
   }
 `;
