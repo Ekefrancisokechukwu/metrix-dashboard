@@ -1,11 +1,16 @@
 import { Search } from "lucide-react";
 import styled from "styled-components";
 
-const ChatUserInput = () => {
+const ChatUserInput = ({ handleSearch, value }) => {
   return (
     <Input>
       <Search width={18} height={18} className="search-icon" />
-      <input type="text" placeholder="Search" />
+      <input
+        type="text"
+        onChange={handleSearch}
+        value={value}
+        placeholder="Search"
+      />
     </Input>
   );
 };

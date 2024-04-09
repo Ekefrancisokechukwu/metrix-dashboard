@@ -1,25 +1,55 @@
+"use client";
+
 import styled from "styled-components";
 import ChatUserInput from "./ChatUserInput";
 import User from "./User";
 import { mediaQueries } from "@/app/style/mediaQueries";
 import { contacts } from "@/lib/data";
+import { useState } from "react";
 
 const ChatUserList = () => {
+  const [ContactsData, setContactsData] = useState(contacts);
+  const [SearchValue, setSearchValue] = useState("");
+
+  const handleFilterContact = (value) => {
+    const filteredData = contacts.filter((contact) =>
+      contact.name.toLowerCase().includes(value.toLowerCase())
+    );
+    setContactsData(filteredData);
+  };
+
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    setSearchValue(value);
+    handleFilterContact(value);
+  };
+
   return (
     <ChatUserWrapper>
       <div className="chatUser-header">
         <div className="chatUser-header_top">
           <h2>Contacts</h2>
-          <span>34</span>
+          <span>{ContactsData.length}</span>
         </div>
-        <ChatUserInput />
+        <ChatUserInput value={SearchValue} handleSearch={handleSearch} />
       </div>
 
-      <ul className="users-container custom-scrollbar">
-        {contacts.map((contact) => {
-          return <User key={contact.id} contact={contact} />;
-        })}
-      </ul>
+      {ContactsData.length > 1 && SearchValue ? (
+        <h1 className="not-found">No Contacts Found!</h1>
+      ) : (
+        <ul className="users-container custom-scrollbar">
+          {ContactsData.map((contact) => {
+            return (
+              <User
+                key={contact.id}
+                setSearchValue={setSearchValue}
+                contact={contact}
+                setContactsData={setContactsData}
+              />
+            );
+          })}
+        </ul>
+      )}
     </ChatUserWrapper>
   );
 };
@@ -52,6 +82,12 @@ const ChatUserWrapper = styled.div`
     }
   }
 
+  .not-found {
+    color: var(--primary-color);
+    font-weight: 500;
+    text-align: center;
+    margin-top: 4rem;
+  }
   .users-container {
     margin-top: 1.4rem;
   }

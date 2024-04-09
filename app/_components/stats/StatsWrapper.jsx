@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Select,
   SelectContent,
@@ -7,8 +9,11 @@ import {
 } from "@/components/ui/select";
 import Image from "next/image";
 import StatsCard from "./StatsCard";
+import { salesData } from "./data";
+import { useState } from "react";
 
 const StatsWrapper = () => {
+  const [salesValue, setSalesValue] = useState("This Week");
   return (
     <>
       {/* sales stats card */}
@@ -21,14 +26,14 @@ const StatsWrapper = () => {
             height={36}
           />
 
-          <Select>
+          <Select value={salesValue} onValueChange={(e) => setSalesValue(e)}>
             <SelectTrigger>
-              <SelectValue />
+              <SelectValue placeholder={"This Week"} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="this week">This Week</SelectItem>
-              <SelectItem value="last month">last Month</SelectItem>
-              <SelectItem value="last year">last Year</SelectItem>
+              <SelectItem value="This Week">This Week</SelectItem>
+              <SelectItem value="Last Month">Last Month</SelectItem>
+              <SelectItem value="Last Year">Last Year</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -36,12 +41,13 @@ const StatsWrapper = () => {
         <div className="card-content">
           <div className="">
             <h5 className="card-desc">Sales</h5>
-            <h2 className="card-number">N4,000,000.00</h2>
+            <h2 className="card-number">{salesData[salesValue].sales}</h2>
           </div>
           <div className="">
             <h5 className="card-desc">Volume</h5>
             <h2 className="card-number">
-              450 <span className="card-rate">+20.00%</span>
+              {salesData[salesValue].volume}{" "}
+              <span className="card-rate">+20.00%</span>
             </h2>
           </div>
         </div>
@@ -59,7 +65,7 @@ const StatsWrapper = () => {
 
           <Select>
             <SelectTrigger className="w-[100px] hover:bg-gray-50 ">
-              <SelectValue />
+              <SelectValue placeholder={"This Week"} />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="this week">This Week</SelectItem>
@@ -97,7 +103,7 @@ const StatsWrapper = () => {
 
           <Select>
             <SelectTrigger className="w-[100px] hover:bg-gray-50 ">
-              <SelectValue />
+              <SelectValue placeholder={"This Week"} />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="this week">This Week</SelectItem>

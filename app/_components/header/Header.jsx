@@ -72,6 +72,7 @@ const HeaderWrapper = styled.header`
   width: 100%;
   position: sticky;
   top: 0;
+  z-index: 10;
 
   .header-top {
     display: flex;

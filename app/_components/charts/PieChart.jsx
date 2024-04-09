@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Select,
   SelectContent,
@@ -6,22 +8,33 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import styled from "styled-components";
+import {
+  PieChart as PieChartRechart,
+  Pie,
+  Cell,
+  ResponsiveContainer,
+  Tooltip,
+} from "recharts";
+import { COLORS, pieChartData } from "./data";
+import { useState } from "react";
 
-const DoghnutChart = () => {
+const PieChart = () => {
+  const [value, setValue] = useState("This Week");
+
   return (
-    <DoghnutChartBox>
+    <PieChartBox>
       <div className="chart-header">
         <h1>Marketing</h1>
-        <Select>
+        <Select value={value} onValueChange={(e) => setValue(e)}>
           <SelectTrigger>
-            <SelectValue defaultValue={"This Week"} />
+            <SelectValue value={value} placeholder="This Week" />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="This Week">This Week</SelectItem>
+            <SelectItem value="This Month">This Month</SelectItem>
           </SelectContent>
         </Select>
       </div>
-
       <div className="keys">
         <div className="key">
           <span />
@@ -37,17 +50,44 @@ const DoghnutChart = () => {
         </div>
       </div>
 
-      <Chart />
-    </DoghnutChartBox>
+      <Chart value={value} />
+    </PieChartBox>
   );
 };
 
-const Chart = () => {
-  return <div className="chart-wrapper"></div>;
+const Chart = ({ value }) => {
+  return (
+    <div className="chart-wrapper">
+      <ResponsiveContainer>
+        <PieChartRechart width={800}>
+          <Pie
+            data={pieChartData[value]}
+            cx="50%"
+            cy="50%"
+            innerRadius={60}
+            outerRadius={80}
+            fill="#8884d8"
+            paddingAngle={0}
+            dataKey="value"
+            label
+          >
+            {" "}
+            {pieChartData[value].map((entry, index) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={COLORS[index % COLORS.length]}
+              />
+            ))}
+          </Pie>
+          <Tooltip />
+        </PieChartRechart>
+      </ResponsiveContainer>
+    </div>
+  );
 };
 
-const DoghnutChartBox = styled.div`
-  padding: 21px 20px;
+const PieChartBox = styled.div`
+  padding: 19px 20px;
   height: 100%;
 
   .chart-header {
@@ -100,7 +140,10 @@ const DoghnutChartBox = styled.div`
     background-repeat: no-repeat;
     background-position: center;
     width: 100%;
+    height: 250px;
     margin-top: 1rem;
+    display: grid;
+    place-items: center;
   }
 `;
-export default DoghnutChart;
+export default PieChart;

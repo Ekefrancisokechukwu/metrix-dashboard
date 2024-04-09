@@ -59,6 +59,7 @@ const ChatWindowWrapper = styled.div`
   top: 0;
   left: 0;
   width: 100%;
+  z-index: 12;
 
   .chat-position {
     padding: 0.6rem 0;

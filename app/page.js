@@ -3,9 +3,10 @@
 import styled from "styled-components";
 import { mediaQueries } from "./style/mediaQueries";
 import StatsWrapper from "./_components/stats/StatsWrapper";
-import DoghnutChart from "./_components/charts/DoghnutChart";
 import { SummaryCards } from "./_components/cards/SummaryCards";
 import RecentOrder from "./_components/recentOrder/RecentOrder";
+import PieChart from "./_components/charts/PieChart";
+import BarChart from "./_components/charts/BarChart";
 
 export default function Home() {
   return (
@@ -14,28 +15,9 @@ export default function Home() {
         <StatsWrapper />
       </div>
 
-      <div className="market_summary-content">
-        {/* <div className="col-1">
-          <DoghnutChart />
-        </div> */}
-        {/* <div className="col-2">
-          <SummaryCards />
-        </div>
-        <div className="col-3">
-          <RecentOrder />
-        </div> */}
-
-        {/* <div className="text-3xl col-1  p-4">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum est
-          praesentium nihil, quo reprehenderit repellendus voluptates tempore
-          eum nulla ducimus vero veritatis amet, ab vel iusto suscipit vitae
-          quam architecto.
-        </div> */}
-      </div>
-
       <div class="grid-container">
         <div class="item1">
-          <DoghnutChart />
+          <PieChart />
         </div>
         <div class="item2">
           <SummaryCards />
@@ -43,7 +25,9 @@ export default function Home() {
         <div class="item3">
           <RecentOrder />
         </div>
-        <div class="item4 ">4</div>
+        <div class="item4 ">
+          <BarChart />
+        </div>
       </div>
     </MainWrapper>
   );
@@ -69,8 +53,6 @@ const MainWrapper = styled.main`
     margin-top: 1rem;
     border-radius: var(--rounded-md);
     gap: 1rem;
-    /* background-color: #2196f3; */
-    padding: 10px;
 
     @media ${mediaQueries.lg} {
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -78,9 +60,7 @@ const MainWrapper = styled.main`
     }
   }
 
-  .grid-container > div {
-    /* background-color: rgba(255, 255, 255, 0.8); */
-  }
+  
 
   .item1 {
     background-color: var(--white);

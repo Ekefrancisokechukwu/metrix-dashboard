@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { contacts } from "@/lib/data";
 import { useChat } from "@/hooks/use-chat";
 
-const User = ({ contact }) => {
+const User = ({ contact, setSearchValue, setContactsData }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const activeContact = searchParams.get("contact") === contact.id;
@@ -21,6 +21,8 @@ const User = ({ contact }) => {
     params.set("contact", contact.id);
     router.push(`?contact=${contact.id}`);
     localStorage.setItem("selectedContact", contact.id);
+    setSearchValue("");
+    setContactsData(contacts);
   };
 
   useEffect(() => {
