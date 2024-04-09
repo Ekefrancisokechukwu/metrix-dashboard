@@ -20,4 +20,21 @@ git clone <git@github.com:Ekefrancisokechukwu/metrix-dashboard.git>
 
 Navigate to the project directory: Use the cd command to move into the project directory:
 
+Install dependencies: Once you're in the project directory, install the necessary dependencies by running:
+
+npm Install
+
 ```
+
+### Running the Application
+
+To start the development server and run the application:
+
+```bash
+npm run dev
+
+```
+
+Here is the Project [live Link](https://metrix-dashboard-ten.vercel.app/)
+
+This command will start the Next.js development server, and you should see output in the terminal indicating that the server is running. By default, the application will be accessible at http://localhost:3000 in your web browser.
