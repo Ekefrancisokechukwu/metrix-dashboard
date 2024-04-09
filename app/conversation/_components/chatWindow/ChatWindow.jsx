@@ -66,12 +66,13 @@ const ChatWindowWrapper = styled.div`
     width: 100%;
     background-color: #fff;
     position: absolute;
-    bottom: 0;
+    bottom: 0.6rem;
     left: 0;
     border-radius: var(--rounded-sm);
 
     @media ${mediaQueries.sm} {
       padding: 0.6rem 1.5rem;
+      bottom: 0;
     }
   }
 
